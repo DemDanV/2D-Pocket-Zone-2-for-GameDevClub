@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EscapeMenuPanelController : MonoBehaviour
@@ -25,5 +26,10 @@ public class EscapeMenuPanelController : MonoBehaviour
     {
         Time.timeScale = 1f;
         StopAllCoroutines();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -10,10 +10,12 @@ public class PointAtTarget : MonoBehaviour
     [SerializeField] float speed = 1;
 
     GameObject limbTargetRef;
+    Vector3 startLocalPos;
 
     private void Start()
     {
         limbTargetRef = transform.GetChild(0).gameObject;
+        startLocalPos = limbTargetRef.transform.localPosition;
     }
 
     private void Update()
@@ -25,6 +27,11 @@ public class PointAtTarget : MonoBehaviour
             targetPos = transform.position + direction.normalized * radius;
             limbTargetRef.transform.position =
                     Vector3.Slerp(limbTargetRef.transform.position, targetPos, speed * Time.deltaTime);
+        }
+        else
+        {
+            limbTargetRef.transform.localPosition =
+                    Vector3.Slerp(limbTargetRef.transform.localPosition, startLocalPos, speed * Time.deltaTime);
         }
     }
 
