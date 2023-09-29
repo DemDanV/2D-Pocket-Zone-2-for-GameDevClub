@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Items/Item")]
 public class Item : ScriptableObject, IComparable<Item>

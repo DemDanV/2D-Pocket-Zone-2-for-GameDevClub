@@ -26,6 +26,8 @@ public class Magazine : MonoBehaviour
         }
     }
 
+    public bool NeedReload => slot.Amount <= 0;
+
     public bool GetAmmo()
     {
         if(slot.Amount <= 0) return false;

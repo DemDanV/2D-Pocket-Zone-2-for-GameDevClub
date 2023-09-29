@@ -69,16 +69,22 @@ public class WeaponController : MonoBehaviour
 
         if (canShoot == false) return false;
 
-        if(enemyLocator.Target == null) return false; //???
-
         if (Time.time - lstShootTime < cooldownTimer) return false;
 
-        lstShootTime = Time.time;
-
-        bool haveAmmo = magazine.GetAmmo();
-
-        if (haveAmmo)
+        if (magazine.NeedReload)
         {
+            Reload();
+            return false;
+        }
+
+        if (enemyLocator.Target == null) return false; //???
+
+        bool tookAmmo = magazine.GetAmmo();
+
+        if (tookAmmo)
+        {
+            lstShootTime = Time.time;
+
             Debug.Log("Shoot WC2");
 
             GameObject go = Instantiate(
@@ -92,7 +98,7 @@ public class WeaponController : MonoBehaviour
         else
             Reload();
 
-        return haveAmmo;
+        return tookAmmo;
     }
 
     public bool Reload()

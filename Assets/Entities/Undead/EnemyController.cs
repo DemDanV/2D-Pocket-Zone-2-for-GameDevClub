@@ -332,7 +332,6 @@ public class EnemyController : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    // Дополнительные методы для определения переходов между состояниями (например, условия для перехода из Wander в Seek).
 
     // Метод для определения, виден ли игрок.
     bool IsTargetVisible()

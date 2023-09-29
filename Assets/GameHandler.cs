@@ -8,6 +8,7 @@ public class GameHandler : MonoBehaviour
         SaveSystem.Init();
     }
 
+    //Called from EscapeMenu-> SaveButton
     public void Save()
     {
         SerializableGameSave gameSave = new SerializableGameSave();
