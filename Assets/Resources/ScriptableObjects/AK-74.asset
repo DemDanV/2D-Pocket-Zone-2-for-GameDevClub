@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 525071e504e1a864cad14728b596bc02, type: 3}
+  m_Name: AK-74
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7255691514094433177, guid: 4691243ff56bfc44c8b0c354b23cc4d3, type: 3}
+  icon: {fileID: 21300000, guid: 6532bc2c52f179142a7333cc0f5faeda, type: 3}
