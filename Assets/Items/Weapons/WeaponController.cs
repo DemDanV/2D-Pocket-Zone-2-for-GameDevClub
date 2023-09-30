@@ -10,17 +10,13 @@ public class WeaponController : MonoBehaviour
     [SerializeField] Transform leftHandPlacementRef;
     [SerializeField] float reloadTime = 3;
 
-
-    //[SerializeField] Transform leftHandLimbRef;
-
     public Magazine Magazine => magazine;
-
 
     EnemyLocator enemyLocator;
     Animator ownerAnimator;
 
     float lstShootTime;
-    bool canShoot = true;//True only for DEBUG purposes
+    bool reloading;
 
     private void Equip()
     {
@@ -50,8 +46,6 @@ public class WeaponController : MonoBehaviour
 
         // Найдите направление на цель
         Vector3 lookDirection = targetPosition - objectPosition;
-        Debug.Log(lookDirection + " : " + objectPosition);
-
 
 
         // Используйте Mathf.Atan2 для вычисления угла между направлением и осью X
@@ -59,15 +53,11 @@ public class WeaponController : MonoBehaviour
 
         // Поворот объекта в направлении цели
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-
-        //transform.LookAt(enemyLocator.Target);
     }
 
     public bool Shoot()
     {
-        Debug.Log("Shoot WC1");
-
-        if (canShoot == false) return false;
+        if (reloading) return false;
 
         if (Time.time - lstShootTime < cooldownTimer) return false;
 
@@ -119,7 +109,7 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator Reloading()
     {
-        canShoot = false;
+        reloading = true;
         PlayerNotificationsManager.singleton.SetState("Reloading...", reloadTime);
         yield return new WaitForSeconds(reloadTime);
         EndReload();
@@ -127,7 +117,7 @@ public class WeaponController : MonoBehaviour
 
     public void EndReload()
     {
-        canShoot = true;
+        reloading = false;
         magazine.Reload();
     }
 
